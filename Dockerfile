@@ -10,8 +10,13 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+
+
 # Copy the rest of the application code
 COPY . .
+
+#run sbuild
+RUN npm run build
 
 # Expose the port used by Next.js (3000)
 EXPOSE 3000
