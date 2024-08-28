@@ -1,23 +1,20 @@
-# Use a Node.js base image with the specified version
-FROM node:14-alpine
+# Use an official Node.js 14 image as a base
+FROM node:14
 
-# Set the working directory
+# Set the working directory to /app
 WORKDIR /app
 
-# Copy package.json and package-lock.json (or yarn.lock) to the working directory
+# Copy the package.json file
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-
-
 # Copy the rest of the application code
 COPY . .
 
-
-# Expose the port used by Next.js (3000)
+# Expose the port
 EXPOSE 3000
 
-# Define the start command
-CMD ["npm", "start"]
+# Run the command to start the development server
+CMD ["npm", "run", "dev"]
